@@ -1,6 +1,5 @@
-var express = require("express");
-var path = require("path");
-var fs = require("fs");
+kconst express = require("express");
+const fs = require("fs");
 
 
 var app = express();
@@ -11,10 +10,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/assets", express.static("./assets"));
 
+// moving before listen
+require("./routes/html")(app);
+require("./routes/api")(app);
 
 app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
 });
-
-require("./routes/html")(app);
-require("./routes/api")(app);
