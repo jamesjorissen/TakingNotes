@@ -1,5 +1,6 @@
-kconst express = require("express");
+const express = require("express");
 const fs = require("fs");
+
 
 
 var app = express();
@@ -11,8 +12,8 @@ app.use(express.json());
 app.use("/assets", express.static("./assets"));
 
 // moving before listen
-require("./routes/html")(app);
-require("./routes/api")(app);
+require("./routes/html-routing")(app);
+require("./routes/api-routing")(app);
 
 app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
